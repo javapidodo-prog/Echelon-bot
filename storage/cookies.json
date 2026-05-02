@@ -1,0 +1,292 @@
+[
+    {
+        "name": "srv_id",
+        "value": "Eep1UeTow1ef3-Zr.f-MLA_cwONPS8T1X3_1-5CHkm417GHMW2cehnFe2DV3_F19KA5l4gOkwkNblxXgY-2nV.-BOeWrun4Ao86ypqusfGlgYblI3RZd22Yjil5y51FOE=.web",
+        "domain": ".avito.ru",
+        "path": "/",
+        "expires": 1816440058.26972,
+        "httpOnly": true,
+        "secure": true,
+        "sameSite": "Lax"
+    },
+    {
+        "name": "u",
+        "value": "3bq5wqlh.15vq58f.41wiy9d1j0i0",
+        "domain": ".avito.ru",
+        "path": "/",
+        "expires": 1816440058.270172,
+        "httpOnly": true,
+        "secure": true,
+        "sameSite": "Lax"
+    },
+    {
+        "name": "h_u",
+        "value": "738a7f7c7fa0b95b:1781880060",
+        "domain": ".avito.ru",
+        "path": "/",
+        "expires": 1816440058.270238,
+        "httpOnly": true,
+        "secure": true,
+        "sameSite": "None"
+    },
+    {
+        "name": "selected_locale",
+        "value": "ru-RU",
+        "domain": ".avito.ru",
+        "path": "/",
+        "expires": -1,
+        "httpOnly": false,
+        "secure": false,
+        "sameSite": "Lax"
+    },
+    {
+        "name": "_gcl_au",
+        "value": "1.1.1222877405.1781880060",
+        "domain": ".avito.ru",
+        "path": "/",
+        "expires": 1789656060,
+        "httpOnly": false,
+        "secure": false,
+        "sameSite": "Lax"
+    },
+    {
+        "name": "_ga_M29JC28873",
+        "value": "GS2.1.s1781880060$o1$g0$t1781880060$j60$l0$h0",
+        "domain": ".avito.ru",
+        "path": "/",
+        "expires": 1816440060.356769,
+        "httpOnly": false,
+        "secure": false,
+        "sameSite": "Lax"
+    },
+    {
+        "name": "_ga",
+        "value": "GA1.1.1230394379.1781880060",
+        "domain": ".avito.ru",
+        "path": "/",
+        "expires": 1816440060.357714,
+        "httpOnly": false,
+        "secure": false,
+        "sameSite": "Lax"
+    },
+    {
+        "name": "ma_cid",
+        "value": "1781880061083125525",
+        "domain": ".avito.ru",
+        "path": "/",
+        "expires": 1813416061.805352,
+        "httpOnly": false,
+        "secure": false,
+        "sameSite": "Lax"
+    },
+    {
+        "name": "_ym_uid",
+        "value": "1781880062902378182",
+        "domain": ".avito.ru",
+        "path": "/",
+        "expires": 1813416062,
+        "httpOnly": false,
+        "secure": true,
+        "sameSite": "None"
+    },
+    {
+        "name": "_ym_d",
+        "value": "1781880062",
+        "domain": ".avito.ru",
+        "path": "/",
+        "expires": 1813416062,
+        "httpOnly": false,
+        "secure": true,
+        "sameSite": "None"
+    },
+    {
+        "name": "buyer_location_id",
+        "value": "621540",
+        "domain": ".avito.ru",
+        "path": "/",
+        "expires": 1813416062.536525,
+        "httpOnly": false,
+        "secure": true,
+        "sameSite": "Lax"
+    },
+    {
+        "name": "sx",
+        "value": "H4sIAAAAAAAC%2FwTAKxrDIBAE4LuMroCWne1ga%2BuiiAwPE4%2Fh4%2B75F0iyNucQZUxU96t%2F1NxCrd6EvDCRoaHzLmah%2FI7%2FsIkXOnL0bxSZ%2BN77CQAA%2F%2F8Rn%2F0lTAAAAA%3D%3D",
+        "domain": ".avito.ru",
+        "path": "/",
+        "expires": 1782484862.538693,
+        "httpOnly": false,
+        "secure": true,
+        "sameSite": "Lax"
+    },
+    {
+        "name": "tmr_lvid",
+        "value": "847debd72573e21bf1d01a65232d4989",
+        "domain": ".avito.ru",
+        "path": "/",
+        "expires": 1810651262,
+        "httpOnly": false,
+        "secure": false,
+        "sameSite": "Lax"
+    },
+    {
+        "name": "tmr_lvidTS",
+        "value": "1781880062934",
+        "domain": ".avito.ru",
+        "path": "/",
+        "expires": 1810651262,
+        "httpOnly": false,
+        "secure": false,
+        "sameSite": "Lax"
+    },
+    {
+        "name": "ma_id",
+        "value": "1535627551781880065812",
+        "domain": ".avito.ru",
+        "path": "/",
+        "expires": 1813416063.569784,
+        "httpOnly": false,
+        "secure": true,
+        "sameSite": "None"
+    },
+    {
+        "name": "adrdel",
+        "value": "1781880063583",
+        "domain": ".www.avito.ru",
+        "path": "/",
+        "expires": 1816440063.584046,
+        "httpOnly": false,
+        "secure": true,
+        "sameSite": "None"
+    },
+    {
+        "name": "adrdel",
+        "value": "1781880063583",
+        "domain": ".avito.ru",
+        "path": "/",
+        "expires": 1816440063.584401,
+        "httpOnly": false,
+        "secure": true,
+        "sameSite": "None"
+    },
+    {
+        "name": "adrcid",
+        "value": "AzgzCM3Rvb0vGoFtd4Hq8Xw",
+        "domain": ".www.avito.ru",
+        "path": "/",
+        "expires": 1816440063.585279,
+        "httpOnly": false,
+        "secure": true,
+        "sameSite": "None"
+    },
+    {
+        "name": "adrcid",
+        "value": "AzgzCM3Rvb0vGoFtd4Hq8Xw",
+        "domain": ".avito.ru",
+        "path": "/",
+        "expires": 1816440063.585628,
+        "httpOnly": false,
+        "secure": true,
+        "sameSite": "None"
+    },
+    {
+        "name": "cookie_consent_shown",
+        "value": "1",
+        "domain": "www.avito.ru",
+        "path": "/",
+        "expires": 1787064063,
+        "httpOnly": false,
+        "secure": false,
+        "sameSite": "Lax"
+    },
+    {
+        "name": "domain_sid",
+        "value": "7YmDy6c8FxthWWFPoLD3n%3A1781880063969",
+        "domain": "www.avito.ru",
+        "path": "/",
+        "expires": 1782484863.970259,
+        "httpOnly": false,
+        "secure": false,
+        "sameSite": "Lax"
+    },
+    {
+        "name": "uxs_uid",
+        "value": "e5fad170-6bec-11f1-a103-a9106a6b721a",
+        "domain": ".avito.ru",
+        "path": "/",
+        "expires": 1816440064,
+        "httpOnly": false,
+        "secure": false,
+        "sameSite": "Lax"
+    },
+    {
+        "name": "acs_3",
+        "value": "%7B%22hash%22%3A%2278168166d1d84ba31a91bed5b79968efe721107d%22%2C%22nst%22%3A1781966464108%2C%22sl%22%3A%7B%22224%22%3A1781880064108%2C%221228%22%3A1781880064108%7D%7D",
+        "domain": ".www.avito.ru",
+        "path": "/",
+        "expires": 1816440064.113667,
+        "httpOnly": false,
+        "secure": true,
+        "sameSite": "None"
+    },
+    {
+        "name": "acs_3",
+        "value": "%7B%22hash%22%3A%2278168166d1d84ba31a91bed5b79968efe721107d%22%2C%22nst%22%3A1781966464108%2C%22sl%22%3A%7B%22224%22%3A1781880064108%2C%221228%22%3A1781880064108%7D%7D",
+        "domain": ".avito.ru",
+        "path": "/",
+        "expires": 1816440064.114091,
+        "httpOnly": false,
+        "secure": true,
+        "sameSite": "None"
+    },
+    {
+        "name": "ma_id_api",
+        "value": "MFshR9I/zK3OC06jrXltdzPV7JsYLsAdPly118P7ggfyHVckPm4u/7Dp28wNoXSIsAkKhu0go6CBM9JS0qVsYHSE1IdcTQD9Ip5DQxzwAnyUOAuXfkZBJzmko1s9Cz77sn8BoWelKx9ubBGs2ok76fAaoMt4QSqM1jzuyW9S0OsuXlacd9tBTv4bmzs//jIqCm/xCtwhniNr1+w72mmzXwnZsfI9aL9uxPLRQCoVJN+TVpyUEjr4ZiHOWjmnjPCuNUnpz9GdyaxbGA128NieFTmWsMUIps5XIGCMgu0XOrIJznWlxmdcqu2BqiwGh/4JwTZSQhYPVPzYQYiwlvgYJA==",
+        "domain": ".avito.ru",
+        "path": "/",
+        "expires": 1813416065.950169,
+        "httpOnly": false,
+        "secure": false,
+        "sameSite": "Lax"
+    },
+    {
+        "name": "__ai_fp_uuid",
+        "value": "e8cb0be5e9a83d34%3A1",
+        "domain": ".avito.ru",
+        "path": "/",
+        "expires": 1813416066,
+        "httpOnly": false,
+        "secure": true,
+        "sameSite": "None"
+    },
+    {
+        "name": "_avisc",
+        "value": "yLpUtimpQmT7OAvPrmDZBrPQEti3Wu95lGDBRqJoJfE=",
+        "domain": ".avito.ru",
+        "path": "/",
+        "expires": 1782035166.45869,
+        "httpOnly": true,
+        "secure": true,
+        "sameSite": "Lax"
+    },
+    {
+        "name": "v",
+        "value": "1782035111",
+        "domain": ".avito.ru",
+        "path": "/",
+        "expires": 1782036907.615293,
+        "httpOnly": true,
+        "secure": true,
+        "sameSite": "Lax"
+    },
+    {
+        "name": "__cf_bm",
+        "value": "6nnI4rz7b8ebDcwlDJ2REB8mfmz3r7JWtcl0vb4r2hU-1782035112.3230565-1.0.1.1-Mk7kTJ8RHHinTqkvETinxRshnx.PiD8TvgPwM1P707e.KHVp89vaJL3lA3zhIb7xPYQ0WpqXdvIqJ.uYY60LLPemEu0tDEvZmGJPKg2YjC1g0L3zAQGl75E7vi4Ij4k9",
+        "domain": ".hcaptcha.com",
+        "path": "/",
+        "expires": 1782036907.135309,
+        "httpOnly": true,
+        "secure": true,
+        "sameSite": "None"
+    }
+]
