@@ -3135,3 +3135,17 @@ aiogram.exceptions.TelegramBadRequest: Telegram server says - Bad Request: messa
 2026-06-23 16:09:14.320 | INFO     | scraper:parse_page:146 - Начинаю обработку категории 'Россия': https://www.avito.ru/rossiya/tovary_dlya_kompyutera/setevoe_oborudovanie?q=mikrotik+hap+ac2&s=104
 2026-06-23 17:15:17.065 | CRITICAL | __main__:main:57 - BOT_TOKEN is invalid or missing in .env
 2026-06-23 17:15:44.122 | CRITICAL | __main__:main:57 - BOT_TOKEN is invalid or missing in .env
+2026-06-23 17:29:11.224 | INFO     | __main__:main:85 - Bot started: @EchelonPR_bot
+2026-06-23 17:29:11.332 | INFO     | aiogram.dispatcher.dispatcher:start_polling:596 - Start polling
+2026-06-23 17:29:11.439 | INFO     | aiogram.dispatcher.dispatcher:_polling:378 - Run polling for bot @EchelonPR_bot id=8792172983 - 'Echelon'
+2026-06-23 17:29:21.094 | INFO     | aiogram.dispatcher.dispatcher:feed_update:178 - Update id=163620391 is handled. Duration 578 ms by bot id=8792172983
+2026-06-23 17:29:35.603 | INFO     | aiogram.dispatcher.dispatcher:feed_update:178 - Update id=163620392 is handled. Duration 240 ms by bot id=8792172983
+2026-06-23 17:29:36.713 | INFO     | aiogram.dispatcher.dispatcher:feed_update:178 - Update id=163620393 is handled. Duration 137 ms by bot id=8792172983
+2026-06-23 17:29:38.142 | INFO     | aiogram.dispatcher.dispatcher:feed_update:178 - Update id=163620394 is handled. Duration 244 ms by bot id=8792172983
+2026-06-23 17:29:38.991 | INFO     | aiogram.dispatcher.dispatcher:feed_update:178 - Update id=163620395 is handled. Duration 279 ms by bot id=8792172983
+2026-06-23 17:29:39.936 | INFO     | aiogram.dispatcher.dispatcher:feed_update:178 - Update id=163620396 is handled. Duration 128 ms by bot id=8792172983
+2026-06-23 17:29:41.040 | INFO     | aiogram.dispatcher.dispatcher:feed_update:178 - Update id=163620397 is handled. Duration 242 ms by bot id=8792172983
+2026-06-23 17:29:41.800 | INFO     | aiogram.dispatcher.dispatcher:feed_update:178 - Update id=163620398 is handled. Duration 157 ms by bot id=8792172983
+2026-06-23 17:29:44.442 | INFO     | aiogram.dispatcher.dispatcher:feed_update:178 - Update id=163620399 is handled. Duration 300 ms by bot id=8792172983
+2026-06-23 17:29:45.746 | INFO     | aiogram.dispatcher.dispatcher:feed_update:178 - Update id=163620400 is handled. Duration 272 ms by bot id=8792172983
+2026-06-23 17:29:46.628 | INFO     | aiogram.dispatcher.dispatcher:feed_update:178 - Update id=163620401 is handled. Duration 341 ms by bot id=8792172983
