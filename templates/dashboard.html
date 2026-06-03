@@ -1,0 +1,600 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Echelon Admin Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #030712;
+      --surface: rgba(17, 24, 39, 0.7);
+      --border: rgba(255, 255, 255, 0.06);
+      --primary: #3b82f6;
+      --primary-glow: rgba(59, 130, 246, 0.5);
+      --success: #10b981;
+      --danger: #ef4444;
+      --text: #f9fafb;
+      --text-muted: #9ca3af;
+      --radius: 16px;
+      --font-display: 'Outfit', sans-serif;
+      --font-body: 'Inter', sans-serif;
+    }
+    
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    body {
+      min-height: 100vh;
+      background: var(--bg);
+      background-image: 
+        radial-gradient(circle at 15% 50%, rgba(59, 130, 246, 0.08), transparent 25%),
+        radial-gradient(circle at 85% 30%, rgba(16, 185, 129, 0.08), transparent 25%);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.5;
+      padding: 40px 20px;
+    }
+    
+    .dashboard {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      animation: fadeIn 0.6s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 32px;
+      background: var(--surface);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    }
+    
+    h1 {
+      font-family: var(--font-display);
+      color: var(--text);
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      background: linear-gradient(to right, #fff, #9ca3af);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .subtitle {
+      margin-top: 6px;
+      color: var(--text-muted);
+      font-size: 15px;
+    }
+    
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 15px;
+      font-weight: 600;
+      padding: 8px 16px;
+      border-radius: 30px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+    }
+    
+    .status::before { content: ""; width: 8px; height: 8px; border-radius: 50%; }
+    .status.ok::before { background: var(--success); box-shadow: 0 0 10px var(--success); }
+    .status.error::before { background: var(--danger); box-shadow: 0 0 10px var(--danger); }
+    
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+    
+    .metric {
+      padding: 24px;
+      background: var(--surface);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      display: flex;
+      flex-direction: column;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .metric::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+    }
+
+    .metric:hover {
+      transform: translateY(-4px);
+      border-color: rgba(255,255,255,0.1);
+      box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+    }
+    
+    .label {
+      color: var(--text-muted);
+      font-family: var(--font-display);
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+    
+    .value {
+      color: var(--text);
+      font-family: var(--font-display);
+      font-size: 40px;
+      font-weight: 700;
+      line-height: 1;
+    }
+    
+    .value.green { color: var(--success); text-shadow: 0 0 20px rgba(16, 185, 129, 0.2); }
+    .value.amber { color: #fbbf24; text-shadow: 0 0 20px rgba(251, 191, 36, 0.2); }
+    
+    .meta {
+      margin-top: 12px;
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+
+    /* Tabs */
+    .tabs-container {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .tabs-header {
+      display: flex;
+      gap: 12px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 12px;
+    }
+
+    .tab-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-family: var(--font-display);
+      font-size: 17px;
+      font-weight: 500;
+      padding: 8px 16px;
+      cursor: pointer;
+      position: relative;
+      transition: color 0.2s;
+    }
+
+    .tab-btn:hover {
+      color: var(--text);
+    }
+
+    .tab-btn.active {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .tab-btn.active::after {
+      content: '';
+      position: absolute;
+      bottom: -13px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--primary);
+      border-radius: 2px;
+      box-shadow: 0 -2px 10px var(--primary-glow);
+    }
+
+    .tab-content {
+      display: none;
+      animation: fadeIn 0.4s ease-out;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+    
+    .panel {
+      background: var(--surface);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+    }
+    
+    .panel-header {
+      padding: 24px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    
+    .panel-header h2 {
+      color: var(--text);
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 600;
+    }
+    
+    .controls {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    
+    .search-input {
+      background: rgba(0,0,0,0.3);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 14px;
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 15px;
+      transition: all 0.2s;
+    }
+    
+    .search-input:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+    }
+    
+    select.search-input {
+      appearance: none;
+      padding-right: 36px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%239ca3af'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+      background-size: 16px;
+    }
+    
+    .sort-btn {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 10px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 15px;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+    
+    .sort-btn:hover { background: rgba(255,255,255,0.1); }
+    
+    .scroll {
+      overflow-x: auto;
+      max-height: 600px;
+      overflow-y: auto;
+    }
+    
+    .scroll::-webkit-scrollbar { width: 8px; height: 8px; }
+    .scroll::-webkit-scrollbar-track { background: transparent; }
+    .scroll::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 4px; }
+    .scroll::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.2); }
+    
+    table { width: 100%; border-collapse: collapse; text-align: left; }
+    
+    th {
+      padding: 16px 24px;
+      color: var(--text-muted);
+      font-family: var(--font-display);
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-weight: 600;
+      border-bottom: 1px solid var(--border);
+      background: rgba(17, 24, 39, 0.95);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    
+    td {
+      padding: 16px 24px;
+      color: #d1d5db;
+      border-bottom: 1px solid rgba(255,255,255,0.02);
+      vertical-align: middle;
+      transition: background 0.2s;
+    }
+    
+    tr:hover td { background: rgba(255,255,255,0.02); }
+    tr.good-deal td { background: rgba(16, 185, 129, 0.03); }
+    tr.good-deal:hover td { background: rgba(16, 185, 129, 0.05); }
+    
+    .price {
+      font-family: var(--font-display);
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--text);
+    }
+    
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 13px;
+      padding: 4px 10px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.05);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    
+    .badge.green { color: var(--success); background: rgba(16,185,129,0.1); }
+    .badge.red { color: var(--danger); background: rgba(239,68,68,0.1); }
+    .badge.neutral { color: var(--text-muted); }
+    
+    .discount-label {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 16px;
+    }
+    
+    .discount-label.green { color: var(--success); }
+    .discount-label.red { color: var(--danger); }
+    .discount-label.neutral { color: var(--text-muted); }
+    
+    .empty-cell {
+      padding: 60px;
+      color: var(--text-muted);
+      text-align: center;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+  <main class="dashboard">
+    <header>
+      <div>
+        <h1>Echelon Dashboard</h1>
+        <div class="subtitle">База данных: {{DB_PATH}}</div>
+      </div>
+      <div class="status {{DB_STATUS_CLASS}}">{{DB_STATUS}}</div>
+    </header>
+
+    {{DB_ERROR_BLOCK}}
+
+    <section class="metrics-grid">
+      <div class="metric">
+        <div class="label">Объявления</div>
+        <div class="value">{{TOTAL_LISTINGS}}</div>
+        <div class="meta">Спарсено: {{LAST_PARSED_AT}}</div>
+      </div>
+      <div class="metric">
+        <div class="label">Уведомления</div>
+        <div class="value green">{{TOTAL_NOTIFICATIONS}}</div>
+        <div class="meta">Средняя выгода: {{AVG_DISCOUNT}}%</div>
+      </div>
+      <div class="metric">
+        <div class="label">Экономия (по медиане)</div>
+        <div class="value green">{{TOTAL_SAVINGS}}</div>
+        <div class="meta">Российских рублей</div>
+      </div>
+      <div class="metric">
+        <div class="label">Точность бота</div>
+        <div class="value amber">{{ACCURACY_PERCENT}}%</div>
+        <div style="margin-top: 12px; height: 4px; background: rgba(255,255,255,0.05); border-radius: 2px; overflow: hidden;">
+          <div style="width: {{ACCURACY_PERCENT}}%; height: 100%; background: #fbbf24; border-radius: 2px; box-shadow: 0 0 10px #fbbf24;"></div>
+        </div>
+      </div>
+      <div class="metric">
+        <div class="label">Аудитория</div>
+        <div class="value">{{TOTAL_USERS}}</div>
+        <div class="meta">Моделей в базе: {{MODELS_COUNT}}</div>
+      </div>
+    </section>
+
+    <div class="tabs-container">
+      <div class="tabs-header">
+        <button class="tab-btn active" onclick="switchTab('listings', event)">Все объявления</button>
+        <button class="tab-btn" onclick="switchTab('validation', event)">Лог валидации</button>
+        <button class="tab-btn" onclick="switchTab('reports', event)">Жалобы</button>
+      </div>
+
+      <!-- Tab 1: Listings -->
+      <div class="tab-content active" id="tab-listings">
+        <section class="panel">
+          <div class="panel-header">
+            <h2>База объявлений</h2>
+            <div class="controls">
+              <input type="text" id="search-title" class="search-input" placeholder="Поиск по названию..." style="width: 180px;" oninput="applyFilters()">
+              
+              <select id="filter-model" class="search-input" style="width: 140px;" onchange="applyFilters()">
+                <option value="">Все модели</option>
+                {{MODEL_OPTIONS}}
+              </select>
+
+              <select id="filter-city" class="search-input" style="width: 130px;" onchange="applyFilters()">
+                <option value="">Все города</option>
+                {{CITY_OPTIONS}}
+              </select>
+
+              <input type="number" id="discount-input" class="search-input" placeholder="Выгода %" style="width: 100px;" oninput="applyFilters()">
+              
+              <button id="price-sort-btn" class="sort-btn" onclick="toggleSort()">Цена ↕</button>
+              <button class="sort-btn" onclick="resetFilters()" style="color: var(--danger); border-color: rgba(239, 68, 68, 0.3);">Сброс ✖</button>
+            </div>
+          </div>
+          <div class="scroll">
+            <table id="main-table">
+              <thead>
+                <tr>
+                  <th style="width: 15%">Дата и время</th>
+                  <th style="width: 20%">Категория / Город</th>
+                  <th style="width: 40%">Товар</th>
+                  <th style="width: 15%">Цена</th>
+                  <th style="width: 10%">Выгода</th>
+                </tr>
+              </thead>
+              <tbody id="listings-body">
+                {{LISTING_ROWS}}
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+
+      <!-- Tab 2: Validation Log -->
+      <div class="tab-content" id="tab-validation">
+        <section class="panel">
+          <div class="panel-header">
+            <h2>Лог рассылок (Валидация)</h2>
+          </div>
+          <div class="scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th style="width: 15%">Время</th>
+                  <th style="width: 25%">Модель / ID</th>
+                  <th style="width: 20%">Цена</th>
+                  <th style="width: 20%">Медиана</th>
+                  <th style="width: 10%">Выгода</th>
+                  <th style="width: 10%">Статус</th>
+                </tr>
+              </thead>
+              <tbody>
+                {{VALIDATION_ROWS}}
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+
+      <!-- Tab 3: Reports -->
+      <div class="tab-content" id="tab-reports">
+        <section class="panel">
+          <div class="panel-header">
+            <h2>Жалобы пользователей</h2>
+          </div>
+          <div class="scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th style="width: 15%">Время</th>
+                  <th style="width: 15%">ID Пользователя</th>
+                  <th style="width: 40%">Объявление</th>
+                  <th style="width: 30%">Причина жалобы</th>
+                </tr>
+              </thead>
+              <tbody>
+                {{REPORT_ROWS}}
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    function switchTab(tabId, event) {
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+      
+      event.currentTarget.classList.add('active');
+      document.getElementById('tab-' + tabId).classList.add('active');
+    }
+
+    let currentSort = 'none';
+
+    function applyFilters() {
+      const minDiscount = parseFloat(document.getElementById('discount-input').value) || -999;
+      const modelFilter = document.getElementById('filter-model').value.toLowerCase();
+      const cityFilter = document.getElementById('filter-city').value.toLowerCase();
+      const searchTitle = document.getElementById('search-title').value.toLowerCase();
+
+      const rows = document.querySelectorAll('#listings-body tr:not(#empty-state-row)');
+      let visibleCount = 0;
+      rows.forEach(row => {
+        if (row.id === 'empty-state-row') return;
+        
+        const rowModelCity = row.cells[1] ? row.cells[1].innerText.toLowerCase() : ''; 
+        const rowTitle = row.cells[2] ? row.cells[2].innerText.toLowerCase() : '';
+        const rowDiscount = row.cells[4] ? (parseFloat(row.cells[4].getAttribute('data-value')) || 0) : 0;
+
+        const matchesModel = !modelFilter || rowModelCity.includes(modelFilter);
+        const matchesCity = !cityFilter || rowModelCity.includes(cityFilter);
+        const matchesDiscount = rowDiscount >= minDiscount;
+        const matchesSearch = !searchTitle || rowTitle.includes(searchTitle);
+
+        if (matchesModel && matchesCity && matchesDiscount && matchesSearch) {
+          row.style.display = '';
+          visibleCount++;
+        } else {
+          row.style.display = 'none';
+        }
+      });
+      
+      let emptyStateRow = document.getElementById('empty-state-row');
+      if (visibleCount === 0) {
+        if (!emptyStateRow) {
+          emptyStateRow = document.createElement('tr');
+          emptyStateRow.id = 'empty-state-row';
+          emptyStateRow.innerHTML = '<td colspan="5" class="empty-cell">По вашему запросу ничего не найдено</td>';
+          document.getElementById('listings-body').appendChild(emptyStateRow);
+        }
+        emptyStateRow.style.display = '';
+      } else if (emptyStateRow) {
+        emptyStateRow.style.display = 'none';
+      }
+    }
+
+    function resetFilters() {
+      document.getElementById('discount-input').value = '';
+      document.getElementById('filter-model').value = '';
+      document.getElementById('filter-city').value = '';
+      document.getElementById('search-title').value = '';
+      applyFilters();
+    }
+
+    function toggleSort() {
+      const btn = document.getElementById('price-sort-btn');
+      if (currentSort === 'none' || currentSort === 'desc') {
+        currentSort = 'asc';
+        btn.innerText = 'Цена ↑';
+      } else {
+        currentSort = 'desc';
+        btn.innerText = 'Цена ↓';
+      }
+      
+      const tbody = document.getElementById('listings-body');
+      const rows = Array.from(tbody.querySelectorAll('tr'));
+      const sorted = rows.sort((a, b) => {
+        const aVal = parseFloat(a.cells[3].getAttribute('data-value')) || 0;
+        const bVal = parseFloat(b.cells[3].getAttribute('data-value')) || 0;
+        return currentSort === 'asc' ? aVal - bVal : bVal - aVal;
+      });
+      
+      tbody.innerHTML = '';
+      sorted.forEach(row => tbody.appendChild(row));
+    }
+  </script>
+</body>
+</html>
